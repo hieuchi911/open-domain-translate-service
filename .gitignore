@@ -2,3 +2,5 @@
 nmt-env/
 
 models/
+
+__pycache__

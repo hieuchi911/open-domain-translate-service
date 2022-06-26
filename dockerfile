@@ -2,7 +2,7 @@ FROM python:3.8-slim-buster
 
 WORKDIR /python-docker
 
-COPY . .
+COPY requirements.txt requirements.txt
 
 # Change back to root user to install dependencies
 USER root
