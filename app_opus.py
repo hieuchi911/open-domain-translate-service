@@ -30,15 +30,11 @@ async def en_to_vi(request):
 @app.route('/vi-to-en', methods=['POST'])
 async def vi_to_en(request):
     global VI_EN_MODEL, VI_EN_TOKENIZER
-    print("\n\nrequest:", request, "\n\n")
     text = request.json["text"]
 
     tokenized_text = VI_EN_TOKENIZER.prepare_seq2seq_batch([text], return_tensors='pt')
     translation = VI_EN_MODEL.generate(**tokenized_text)
     translated_text = VI_EN_TOKENIZER.batch_decode(translation, skip_special_tokens=True)[0]
-
-    # Print translated text
-    print(translated_text)
 
     return response.text(translated_text)
 
