@@ -7,12 +7,12 @@ app = Sanic("NMT-Server")
 async def load_model(app):
     global EN_VI_MODEL, EN_VI_TOKENIZER, VI_EN_MODEL, VI_EN_TOKENIZER
     # Initialize the tokenizer, model for English to Vietnamese Translation
-    EN_VI_TOKENIZER = AutoTokenizer.from_pretrained("models/opus-mt-en-vi")
-    EN_VI_MODEL = AutoModelForSeq2SeqLM.from_pretrained("models/opus-mt-en-vi")
+    EN_VI_TOKENIZER = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-vi", cache_dir="models/opus-mt-en-vi")
+    EN_VI_MODEL = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-vi", cache_dir="models/opus-mt-en-vi")
     
     # Initialize the tokenizer, model for  Vietnamese to English Translation
-    VI_EN_TOKENIZER = AutoTokenizer.from_pretrained("models/opus-mt-vi-en")
-    VI_EN_MODEL = AutoModelForSeq2SeqLM.from_pretrained("models/opus-mt-vi-en")
+    VI_EN_TOKENIZER = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-vi-en", cache_dir="models/opus-mt-vi-en")
+    VI_EN_MODEL = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-vi-en", cache_dir="models/opus-mt-vi-en")
 
 
 @app.route('/en-to-vi', methods=['POST'])

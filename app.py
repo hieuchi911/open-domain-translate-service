@@ -19,13 +19,13 @@ async def load_model(app):
         DEVICE = torch.device("cpu")
 
     # Initialize the tokenizer, model for English to Vietnamese Translation
-    EN_VI_MODEL = T5ForConditionalGeneration.from_pretrained("models/t5-en-vi-small")
-    EN_VI_TOKENIZER = T5Tokenizer.from_pretrained("models/t5-en-vi-small")
+    EN_VI_MODEL = T5ForConditionalGeneration.from_pretrained("NlpHUST/t5-en-vi-small", cache_dir="models/t5-en-vi-small")
+    EN_VI_TOKENIZER = T5Tokenizer.from_pretrained("NlpHUST/t5-en-vi-small", cache_dir="models/t5-en-vi-small")
     EN_VI_MODEL.to(DEVICE)
 
     # Initialize the tokenizer, model for  Vietnamese to English Translation
-    VI_EN_MODEL = T5ForConditionalGeneration.from_pretrained("models/t5-vi-en-small")
-    VI_EN_TOKENIZER = T5Tokenizer.from_pretrained("models/t5-vi-en-small")
+    VI_EN_MODEL = T5ForConditionalGeneration.from_pretrained("NlpHUST/t5-vi-en-small", cache_dir="models/t5-vi-en-small")
+    VI_EN_TOKENIZER = T5Tokenizer.from_pretrained("NlpHUST/t5-vi-en-small", cache_dir="models/t5-vi-en-small")
     VI_EN_MODEL.to(DEVICE)
 
 
