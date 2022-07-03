@@ -2,8 +2,7 @@
 
 ## I. Notebook `test-sanic-app.ipynb`:
 contains code for:
-- loading and testing several Machine Translation (MT) models (NlpHUST model, Helsinki-NLP model, Facebook mBart)
-- once load model from huggingface, pretrained models will be downloaded and cached in host machine at `models/` folder in this project
+- loading and testing several Machine Translation (MT) models (NlpHUST model, Helsinki-NLP model, Facebook mBart). Once load model from huggingface, pretrained models will be downloaded and cached in host machine at `models/` folder in this project
 - testing sanic apps that serve MT models (except for Facebook mBart since it consumes a lot resource) and a open-domain-chatbot model on host server (sanic app for open-domain-chatbot can be found at https://gitlab.com/ct_group1/chatbot/other-services/Blender-Bot-Service)
 
 ## II. Other python files:
