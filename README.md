@@ -15,7 +15,24 @@ To host these sanic services on host machine, execute following command:
   > python -m sanic <name of file that stores sanic app, e.g if file named app_opus.py, type 'app_opus'>:<name of Sanic object defined in python file> -H <host address> -p <listening port>
   >```
 
-## III. Docker:
+Example:
+  >```
+  > python -m sanic app:app -H localhost -p 8001
+  >```
+## III. JSON request format
+To chat with Blender-bot, you need to send file json to sanic server with the following format:
+```
+{'text': "user text"}
+```
+Example:
+```
+{'text': "bạn đã làm bài tập về nhà chưa?"}
+```
+Server will send back english version:
+```
+{"text":"Have you done your homework?"}
+```
+## IV. Docker:
 - dockerfile in this repo builds docker image that holds environment (requirements.txt) runnable for both translate and open-domain-chatbot services.
 - docker image: hieuchi911/open-domain-kit:without-ckpts. Only 2 files needed to build this image: dockerfile and `requirements.txt`.
 - to run docker services for translate service:

@@ -2,3 +2,6 @@ transformers==4.18.0
 sentencepiece==0.1.96
 sanic==22.3.1
 torch==1.11.0
+
+# extra lib needed if use python 3.10.2
+protobuf==3.20.0
