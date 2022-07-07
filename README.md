@@ -19,14 +19,14 @@ To host these sanic services on host machine, execute following command:
 - dockerfile in this repo builds docker image that holds environment (requirements.txt) runnable for both translate and open-domain-chatbot services.
 - docker image: hieuchi911/open-domain-kit:without-ckpts. Only 2 files needed to build this image: dockerfile and `requirements.txt`.
 - to run docker services for translate service:
-  - run the image, binding the container's working directory with directory containing sanic app file (e.g in this repo, `app.py` or `app_opus.py`) and `models/` folder for translate service (similarly for open-domain-chatbot service).
+  - run the image, binding the container's working directory with directory containing sanic app file (e.g in this repo, `app.py` or `app_opus.py`) for translate service (similarly for open-domain-chatbot service).
   - run sanic service in the container (either via `CMD` in dockerfile or provide command at `container run`)
   - these steps is shown in following example:
     >```
     > sudo docker run --name en-vi-translate -p 8001:8000 -v "./actions/Translate-Service/:/python-docker/" hieuchi911/open-domain-kit:without-ckpts python -m sanic app:app -H 0.0.0.0 -p 8000
     >```
     ,where:
-    - `-v "./actions/Translate-Service/:/python-docker/"` maps host machine's directory that stores sanic app and `models/` folder (`./actions/Translate-Service/`) with the container's working directory (`/python-docker/`)
+    - `-v "./actions/Translate-Service/:/python-docker/"` maps host machine's directory that stores sanic app (`./actions/Translate-Service/`) with the container's working directory (`/python-docker/`)
     - `python -m sanic app:app -H 0.0.0.0 -p 8000` is the command that run sanic service to listen at port 8000 in the container at container startup. This command is optional since the defined dockerfile already defines this at `CMD` instruction, port specified is 5351 instead of 8000 (the python command in dockerfile wont run since it's overwritten by the python command defined at `docker run`, according to https://docs.docker.com/engine/reference/run/#cmd-default-command-or-options)
     - `-p 8001:8000` maps port `8000` in container to port `8001` in local machine, so requests from outside should be sent to port `8001`
   - Example above corresponds to following docker-compose service block:
